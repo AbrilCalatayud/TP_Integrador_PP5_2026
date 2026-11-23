@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from dominio.excepciones import (AutorNoValidoError, DatoInvalidoError, OperacionNoPermitidaError)
+from dominio.excepciones import (AutorNoValidoError, CampoVacioError, OperacionNoPermitidaError)
 
 class Aviso:
     def __init__(self, reportante, ubicacion, tipo_situacion, gravedad_estimada, descripcion, fecha_hora):
@@ -57,3 +57,5 @@ class Aviso:
 
     def pertenece_a(self, reportante):
         return self._reportante == reportante
+
+    

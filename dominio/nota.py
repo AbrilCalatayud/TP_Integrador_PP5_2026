@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from dominio.excepciones import DatoInvalidoError
+from dominio.excepciones import CampoVacioError
 
 class Nota:
     def __init__(self, autor, texto, fecha_hora):

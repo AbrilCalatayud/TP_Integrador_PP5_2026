@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from .excepciones import JustificacionInvalidaError
+from dominio.excepciones import CampoVacioError
 
 class Descarte:
     def __init__(self, justificacion, fecha_hora):

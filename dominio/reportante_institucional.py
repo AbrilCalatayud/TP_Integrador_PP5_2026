@@ -1,4 +1,4 @@
-from dominio.excepciones import DatoInvalidoError
+from dominio.excepciones import DatoInvalidoError, CampoVacioError
 
 class ReportanteInstitucional:
     def __init__(self, id, nombre, institucion):
