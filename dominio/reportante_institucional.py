@@ -5,9 +5,9 @@ class ReportanteInstitucional:
         if id <= 0:
             raise DatoInvalidoError("El identificador del reportante debe ser un entero positivo.")
         if not nombre.strip():
-            raise DatoInvalidoError("El nombre del reportante no puede estar vacío.")
+            raise CampoVacioError("El nombre del reportante no puede estar vacío.")
         if not institucion.strip():
-            raise DatoInvalidoError("La institución del reportante no puede estar vacía.")
+            raise CampoVacioError("La institución del reportante no puede estar vacía.")
 
         self._id = id
         self._nombre = nombre.strip()

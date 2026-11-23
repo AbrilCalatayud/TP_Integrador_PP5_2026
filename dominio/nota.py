@@ -5,7 +5,7 @@ from dominio.excepciones import DatoInvalidoError
 class Nota:
     def __init__(self, autor, texto, fecha_hora):
         if not texto.strip():
-            raise DatoInvalidoError("El texto de la nota no puede estar vacío.")
+            raise CampoVacioError("El texto de la nota no puede estar vacío.")
 
         self._autor = autor
         self._texto = texto.strip()

@@ -2,7 +2,7 @@ class DatoInvalidoError(Exception):
     pass
 
 
-class JustificacionInvalidaError(DatoInvalidoError):
+class CampoVacioError(DatoInvalidoError):
     pass
 
 

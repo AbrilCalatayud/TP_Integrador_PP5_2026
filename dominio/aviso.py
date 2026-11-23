@@ -5,9 +5,9 @@ from dominio.excepciones import (AutorNoValidoError, DatoInvalidoError, Operacio
 class Aviso:
     def __init__(self, reportante, ubicacion, tipo_situacion, gravedad_estimada, descripcion, fecha_hora):
         if not ubicacion.strip():
-            raise DatoInvalidoError("La ubicación del aviso no puede estar vacía.")
+            raise CampoVacioError("La ubicación del aviso no puede estar vacía.")
         if not descripcion.strip():
-            raise DatoInvalidoError("La descripción inicial del aviso no puede estar vacía.")
+            raise CampoVacioError("La descripción inicial del aviso no puede estar vacía.")
 
         self._reportante = reportante
         self._ubicacion = ubicacion.strip()
