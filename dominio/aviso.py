@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from dominio.excepciones import (AutorNoValidoError, CampoVacioError, OperacionNoPermitidaError)
+from dominio.nota import Nota
+from dominio.descarte import Descarte
 
 class Aviso:
     def __init__(self, reportante, ubicacion, tipo_situacion, gravedad_estimada, descripcion, fecha_hora):
@@ -58,4 +60,25 @@ class Aviso:
     def pertenece_a(self, reportante):
         return self._reportante == reportante
 
-    
+    def agregar_nota(self, autor, texto, fecha_hora):
+        if self._estado != EstadoAviso.PENDIENTE:
+            raise OperacionNoPermitidaError(f"No se pueden agregar notas a un aviso en estado {self._estado.value}.")
+        if not self.pertenece_a(autor):
+            raise AutorNoValidoError("Solo el reportante original del aviso puede agregar notas.")
+
+        nueva_nota = Nota(autor, texto, fecha_hora)
+        self._notas.append(nueva_nota)
+
+    def descartar(self, justificacion, fecha_hora):
+        if self._estado != EstadoAviso.PENDIENTE:
+            raise OperacionNoPermitidaError(f"No se puede descartar un aviso en estado {self._estado.value}.")
+
+        nuevo_descarte = Descarte(justificacion, fecha_hora)
+        self._descarte = nuevo_descarte
+        self._estado = EstadoAviso.DESCARTADO
+
+    def aceptar(self):
+        if self._estado != EstadoAviso.PENDIENTE:
+            raise OperacionNoPermitidaError(f"No se puede aceptar un aviso en estado {self._estado.value}.")
+            
+        self._estado = EstadoAviso.ACEPTADO
