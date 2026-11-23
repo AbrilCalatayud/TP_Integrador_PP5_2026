@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from dominio.excepciones import (AutorNoValidoError, CampoVacioError, OperacionNoPermitidaError)
+from dominio.enums import EstadoAviso
 from dominio.nota import Nota
 from dominio.descarte import Descarte
 
@@ -42,8 +43,8 @@ class Aviso:
         return self._descripcion
 
     @property
-    def fecha_hora_registro(self):
-        return self._fecha_hora_registro
+    def fecha_hora(self):
+        return self._fecha_hora
 
     @property
     def estado(self):
@@ -80,5 +81,5 @@ class Aviso:
     def aceptar(self):
         if self._estado != EstadoAviso.PENDIENTE:
             raise OperacionNoPermitidaError(f"No se puede aceptar un aviso en estado {self._estado.value}.")
-            
+
         self._estado = EstadoAviso.ACEPTADO
