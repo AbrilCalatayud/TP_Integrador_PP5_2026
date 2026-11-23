@@ -1,8 +1,6 @@
 from datetime import datetime
 
-from dominio.enums import EstadoAviso, GravedadEstimada, TipoSituacion
 from dominio.excepciones import (AutorNoValidoError, DatoInvalidoError, OperacionNoPermitidaError)
-from dominio.reportante import ReportanteInstitucional
 
 class Aviso:
     def __init__(self, reportante, ubicacion, tipo_situacion, gravedad_estimada, descripcion, fecha_hora):
